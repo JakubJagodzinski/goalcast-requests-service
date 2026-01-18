@@ -1,0 +1,5 @@
+pydantic~=2.12.5
+fastapi~=0.128.0
+load-dotenv
+python-dotenv
+aiokafka
