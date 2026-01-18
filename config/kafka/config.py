@@ -1,9 +1,9 @@
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 
-# dotenv_path = Path(__file__).parent / ".env"
-dotenv_path = r"C:\Users\kubaj\Desktop\Studia\VII semestr\[BLOK OBIERALNY] Big Data (3 ECTS)\backend\.env"
+dotenv_path = Path.cwd() / ".env"
 
 load_dotenv(
     dotenv_path=dotenv_path
