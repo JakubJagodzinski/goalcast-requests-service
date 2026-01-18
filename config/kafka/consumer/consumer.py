@@ -9,7 +9,7 @@ consumer: AIOKafkaConsumer | None = None
 
 async def get_kafka_consumer(topic: str) -> AIOKafkaConsumer:
     logging.info(f"Creating consumer for topic {topic}")
-    print(f"Creating consumer for topic {topic}")
+
     global consumer
     if consumer is None:
         consumer = AIOKafkaConsumer(
@@ -21,7 +21,7 @@ async def get_kafka_consumer(topic: str) -> AIOKafkaConsumer:
             value_deserializer=lambda v: v.decode("utf-8")
         )
         await consumer.start()
-    print(f"Consumer created for topic {topic}: {consumer}")
+    logging.info(f"Consumer created for topic {topic}: {consumer}")
     return consumer
 
 

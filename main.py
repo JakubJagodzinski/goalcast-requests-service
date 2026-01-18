@@ -11,6 +11,11 @@ from domain.teams.dto.response.GetTeamsResponseDto import GetTeamsResponseDto
 from domain.teams.teams import get_teams
 from events.prediction_response_event_consumer import consume_prediction_response_events
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s"
+)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
