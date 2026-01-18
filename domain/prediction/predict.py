@@ -30,7 +30,8 @@ async def handle_prediction_request(request_dto: PredictRequestDto) -> PredictRe
         request_id=request_id,
         home_team=result.get("home_team"),
         away_team=result.get("away_team"),
-        winner=result.get("winner")
+        winner=result.get("winner"),
+        confidence=result.get("confidence")
     )
 
     return response_dto

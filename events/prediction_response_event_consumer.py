@@ -17,7 +17,7 @@ async def consume_prediction_response_events():
             request_id = data.get("request_id")
             if request_id in pending_requests:
                 pending_requests[request_id].set_result(data)
-                logging.info(f"Delivered prediction result: {data}")
+                logging.info(f"Received prediction result: {data}")
     except asyncio.CancelledError:
         pass
     finally:
