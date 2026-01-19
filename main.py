@@ -4,6 +4,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from domain.models.dto.response.GetAvailableModelsResponseDto import GetAvailableModelsResponseDto
+from domain.models.models import get_available_models
 from domain.prediction.dto.request.PredictRequestDto import PredictRequestDto
 from domain.prediction.dto.response.PredictResponseDto import PredictResponseDto
 from domain.prediction.predict import handle_prediction_request
@@ -44,6 +46,13 @@ async def root():
 @app.get("/api/v1/teams", response_model=GetTeamsResponseDto)
 async def get_teams_endpoint():
     response_dto = await get_teams()
+
+    return response_dto
+
+
+@app.get("/api/v1/models", response_model=GetAvailableModelsResponseDto)
+async def get_available_models_endpoint():
+    response_dto = await get_available_models()
 
     return response_dto
 

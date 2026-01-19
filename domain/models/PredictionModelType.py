@@ -10,3 +10,7 @@ class PredictionModelType(str, Enum):
     @classmethod
     def get_default(cls) -> str:
         return cls.GRADIENT_BOOST_TREE.name.lower()
+
+    @classmethod
+    def get_list(cls) -> list[str]:
+        return [model.value for model in cls]

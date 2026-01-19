@@ -2,7 +2,7 @@ import asyncio
 import logging
 import uuid
 
-from domain.prediction.PredictionModelType import PredictionModelType
+from domain.models.PredictionModelType import PredictionModelType
 from domain.prediction.dto.request.PredictRequestDto import PredictRequestDto
 from domain.prediction.dto.response.PredictResponseDto import PredictResponseDto
 from events import prediction_request_event_producer
