@@ -2,6 +2,7 @@ import asyncio
 import logging
 import uuid
 
+from domain.prediction.PredictionModelType import PredictionModelType
 from domain.prediction.dto.request.PredictRequestDto import PredictRequestDto
 from domain.prediction.dto.response.PredictResponseDto import PredictResponseDto
 from events import prediction_request_event_producer
@@ -13,8 +14,13 @@ async def handle_prediction_request(request_dto: PredictRequestDto) -> PredictRe
 
     request_id = str(uuid.uuid4())
 
+    model_name = request_dto.model_name
+    if model_name is None:
+        model_name = PredictionModelType.get_default()
+
     await prediction_request_event_producer.produce_prediction_request_event(
         request_id=request_id,
+        model_name=model_name,
         home_team=request_dto.home_team,
         away_team=request_dto.away_team
     )
@@ -28,6 +34,7 @@ async def handle_prediction_request(request_dto: PredictRequestDto) -> PredictRe
 
     response_dto = PredictResponseDto(
         request_id=request_id,
+        model_name=result.get("model_name"),
         home_team=result.get("home_team"),
         away_team=result.get("away_team"),
         winner=result.get("winner"),

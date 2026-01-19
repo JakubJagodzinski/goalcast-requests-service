@@ -7,3 +7,4 @@ class PredictResponseDto(BaseModel):
     away_team: str
     winner: str
     confidence: float
+    model_name: str
