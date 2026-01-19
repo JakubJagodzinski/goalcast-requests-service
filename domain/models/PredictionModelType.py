@@ -1,3 +1,4 @@
+import random
 from enum import Enum
 
 
@@ -8,9 +9,9 @@ class PredictionModelType(str, Enum):
     GRADIENT_BOOST_TREE = "gradient_boost_tree"
 
     @classmethod
-    def get_default(cls) -> str:
-        return cls.GRADIENT_BOOST_TREE.name.lower()
-
-    @classmethod
     def get_list(cls) -> list[str]:
         return [model.value for model in cls]
+
+    @classmethod
+    def get_random(cls) -> str:
+        return random.choice(cls.get_list())

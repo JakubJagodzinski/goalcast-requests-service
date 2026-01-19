@@ -1,3 +1,4 @@
+import random
 from pathlib import Path
 
 from domain.teams.dto.response.GetTeamsResponseDto import GetTeamsResponseDto
@@ -30,3 +31,6 @@ def load_teams() -> list[str]:
             ]
 
     return _TEAMS_CACHE
+
+def get_random_team() -> str:
+    return random.choice(load_teams())
